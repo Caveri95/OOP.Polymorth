@@ -1,8 +1,12 @@
 package Transport;
 
 public class Track extends Transport implements Rival {
-    public Track(String brand, String model, double engineVol) {
+
+    private final Weight weight;
+
+    public Track(String brand, String model, double engineVol, Weight weight) {
         super(brand, model, engineVol);
+        this.weight = weight;
     }
 
     @Override
@@ -14,6 +18,7 @@ public class Track extends Transport implements Rival {
     public void stop() {
         System.out.println("остановить грузовик");
     }
+
 
     @Override
     public void pitStop() {
@@ -30,5 +35,17 @@ public class Track extends Transport implements Rival {
         System.out.println("максимальная скорость на грузовике составила" + speed);
     }
 
+    @Override
+    public void printType() {
+        if (weight == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println(getWeight());
+        }
 
+    }
+
+    public Weight getWeight() {
+        return weight;
+    }
 }

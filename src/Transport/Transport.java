@@ -27,6 +27,7 @@ public abstract class Transport implements Rival {
 
     public abstract void start();
     public abstract void stop();
+    public abstract void printType();
 
     public String getBrand() {
         return brand;

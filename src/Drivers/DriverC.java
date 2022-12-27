@@ -1,3 +1,4 @@
+/*
 package Drivers;
 
 import Transport.Transport;
@@ -33,3 +34,4 @@ public class DriverC <T extends Transport & Rival> extends Drivers {
                 " с категорией прав " + getDriverLicense() + " начинает заправляться");
     }
 }
+*/

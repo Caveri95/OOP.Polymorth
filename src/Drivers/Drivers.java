@@ -1,20 +1,24 @@
 package Drivers;
-
-import Transport.Car;
-import Transport.Bus;
 import Transport.Rival;
 import Transport.Transport;
-
 import java.util.Objects;
 
-public abstract class Drivers {
+public class Drivers <T extends Transport & Rival> {
     private final String name;
     private final String surname;
     private final String patronymic;
     private String driverLicense;
     private double drivingExperience;
 
-    public Drivers(String name, String surname, String patronymic, String driverLicense, double drivingExperience) {
+    public void drive(T transport) {
+        System.out.println("Водитель: " + getName() + " " + getSurname() + " " +
+                getPatronymic() + " с водительской категорией - " +
+                getDriverLicense() + " управляет: " + transport.getBrand() + " " +
+                transport.getModel() + " и будет учавствовать в заезде.");
+    }
+
+
+    public Drivers(String surname, String name, String patronymic, String driverLicense, double drivingExperience) {
         if (name != null && !name.isEmpty() && !name.isBlank()) {
             this.name = name;
         } else {
@@ -38,9 +42,20 @@ public abstract class Drivers {
         }
     }
 
-    public abstract void start();
-    public abstract void stop();
-    public abstract void refuel();
+    public void start() {
+        System.out.println("Водитель: " + getName() + " " + getSurname() + " " + getPatronymic() +
+                " с категорией прав " + getDriverLicense() + " начинает движение");
+
+    }
+    public void stop() {
+        System.out.println("Водитель: " + getName() + " " + getSurname() + " " + getPatronymic() +
+                " с категорией прав " + getDriverLicense() + " останавливается");
+    }
+    public void refuel() {
+        System.out.println("Водитель: " + getName() + " " + getSurname() + " " + getPatronymic() +
+                " с категорией прав " + getDriverLicense() + " начинает заправляться");
+
+    }
 
     public String getName() {
         return name;

@@ -1,19 +1,24 @@
 package Transport;
 
 public class Car extends Transport implements Rival{
-    public Car(String brand, String model, double engineVol) {
+
+    private final BodyType bodyType;
+
+    public Car(String brand, String model, double engineVol, BodyType bodyType) {
         super(brand, model, engineVol);
+        this.bodyType = bodyType;
     }
 
     @Override
     public void start() {
-        System.out.println("разогнать автомашине");
+        System.out.println("разогнать автомашину");
     }
 
     @Override
     public void stop() {
-        System.out.println("остановить автомашине");
+        System.out.println("остановить автомашину");
     }
+
 
     @Override
     public void pitStop() {
@@ -28,5 +33,18 @@ public class Car extends Transport implements Rival{
     @Override
     public void maxSpeed(double speed) {
         System.out.println("максимальная скорость на автомашине составила" + speed);
+    }
+
+    @Override
+    public void printType() {
+        if (bodyType == null) {
+            System.out.println("Данных по транспортному средству недостаточно");
+        } else {
+            System.out.println(getBodyType());
+        }
+    }
+
+    public BodyType getBodyType() {
+        return bodyType;
     }
 }

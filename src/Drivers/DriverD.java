@@ -1,4 +1,4 @@
-package Drivers;
+/*package Drivers;
 
 import Transport.Transport;
 import Transport.Rival;
@@ -31,4 +31,4 @@ public class DriverD <T extends Transport & Rival> extends Drivers {
         System.out.println("Водитель: " + getName() + " " + getSurname() + " " + getPatronymic() +
                 " с категорией прав " + getDriverLicense() + " начинает заправляться");
     }
-}
+}*/
