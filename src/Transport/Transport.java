@@ -28,7 +28,20 @@ public abstract class Transport implements Rival {
     public abstract void start();
     public abstract void stop();
     public abstract void printType();
+    public abstract void diagnosticsTransport() throws CantPassDiagnostic;
 
+    public static void diagnostic(Transport... transports) {
+        for (Transport transport : transports) {
+            try {
+                transport.diagnosticsTransport();
+            } catch (CantPassDiagnostic e) {
+                System.out.print("Произошла ошибка c " +
+                        e.getTransport().getBrand() + " " +
+                        e.getTransport().getModel() + ".");
+                System.out.println(e.getMessage());
+            }
+        }
+    }
     public String getBrand() {
         return brand;
     }
@@ -62,4 +75,5 @@ public abstract class Transport implements Rival {
     public int hashCode() {
         return Objects.hash(brand, model, engineVol);
     }
+
 }

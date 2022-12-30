@@ -1,7 +1,6 @@
 import Transport.*;
 import Drivers.Drivers;
-
-public class Main {
+public class Main  {
     public static void main(String[] args) {
 
         Car ford = new Car("Форд", "Фокус", 2.0, BodyType.SEDAN);
@@ -23,21 +22,19 @@ public class Main {
         Drivers<Car> oleg = new Drivers<Car>("Иванов", "Олег", "Иванович", "B", 8);
         oleg.drive(ford);
 
-        Drivers<Bus> boris = new Drivers<Bus>("Долгов", "Борис", "Александрович", "C", 4);
-        boris.drive(MAZ101);
+        Drivers<Bus> boris = new Drivers<Bus>("Долгов", "Борис", "Александрович", "I", 4);
+         boris.drive(MAZ101);
 
         Drivers<Track> victor = new Drivers<Track>("Пирогов", "Виктор", "Васильевич", "D", 15);
         victor.drive(scaniaG380);
-
-
 
         MAZ101.printType();
 
         scaniaG380.printType();
 
+        Transport.diagnostic(ford, MAZ101, scaniaG380, hyundai);
 
-
-
+        System.out.println(boris);
 
 
     }

@@ -3,12 +3,13 @@ import Transport.Rival;
 import Transport.Transport;
 import java.util.Objects;
 
-public class Drivers <T extends Transport & Rival> {
+public class Drivers <T extends Transport & Rival>  {
     private final String name;
     private final String surname;
     private final String patronymic;
     private String driverLicense;
     private double drivingExperience;
+    private final String s = "ABCDE";
 
     public void drive(T transport) {
         System.out.println("Водитель: " + getName() + " " + getSurname() + " " +
@@ -16,7 +17,6 @@ public class Drivers <T extends Transport & Rival> {
                 getDriverLicense() + " управляет: " + transport.getBrand() + " " +
                 transport.getModel() + " и будет учавствовать в заезде.");
     }
-
 
     public Drivers(String surname, String name, String patronymic, String driverLicense, double drivingExperience) {
         if (name != null && !name.isEmpty() && !name.isBlank()) {
@@ -34,7 +34,7 @@ public class Drivers <T extends Transport & Rival> {
         } else {
             this.patronymic = "данных нет";
         }
-        this.driverLicense = driverLicense;
+        setDriverLicense(driverLicense);
         if (drivingExperience > 0) {
             this.drivingExperience = drivingExperience;
         } else {
@@ -78,10 +78,15 @@ public class Drivers <T extends Transport & Rival> {
     }
 
     public void setDriverLicense(String driverLicense) {
-        if (driverLicense.equals("B") || driverLicense.equals("C") || driverLicense.equals("D")) {
-            this.driverLicense = driverLicense;
-        } else {
-            this.driverLicense = null;
+        try {
+            if (s.contains(driverLicense)) {
+                this.driverLicense = driverLicense;
+            } else {
+                throw new NoValidDriverLicense("Необходимо указать корректный тип прав для водителя: " +
+                        getSurname() + " " + getName() + " " + getPatronymic() + " ");
+            }
+        } catch (NoValidDriverLicense e) {
+            System.out.println(e.getMessage());
         }
     }
 

@@ -42,7 +42,11 @@ public class Track extends Transport implements Rival {
         } else {
             System.out.println(getWeight());
         }
+    }
 
+    @Override
+    public void diagnosticsTransport() throws CantPassDiagnostic {
+        System.out.println("Грузовик " + getBrand() + " " + getModel() + " может пройти диагностику");
     }
 
     public Weight getWeight() {

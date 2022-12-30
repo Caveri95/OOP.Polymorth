@@ -44,6 +44,11 @@ public class Car extends Transport implements Rival{
         }
     }
 
+    @Override
+    public void diagnosticsTransport() throws CantPassDiagnostic {
+        System.out.println("Автомашина " + getBrand() + " " + getModel() + " может пройти диагностику");
+    }
+
     public BodyType getBodyType() {
         return bodyType;
     }

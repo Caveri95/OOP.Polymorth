@@ -42,6 +42,11 @@ public class Bus extends Transport implements Rival {
         }
     }
 
+    @Override
+    public void diagnosticsTransport() throws CantPassDiagnostic {
+        throw new CantPassDiagnostic(" Автобус не может проходить диагностику", this);
+    }
+
     public BusCapacity getBusCapacity() {
         return busCapacity;
     }
