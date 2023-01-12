@@ -9,7 +9,6 @@ public class Drivers <T extends Transport & Rival>  {
     private final String patronymic;
     private String driverLicense;
     private double drivingExperience;
-    private final String s = "ABCDE";
 
     public void drive(T transport) {
         System.out.println("Водитель: " + getName() + " " + getSurname() + " " +
@@ -79,6 +78,7 @@ public class Drivers <T extends Transport & Rival>  {
 
     public void setDriverLicense(String driverLicense) {
         try {
+            String s = "ABCDE";
             if (s.contains(driverLicense)) {
                 this.driverLicense = driverLicense;
             } else {

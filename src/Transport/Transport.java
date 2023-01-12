@@ -1,5 +1,9 @@
 package Transport;
 
+import Drivers.Drivers;
+import Mechanics.Mechanics;
+
+import java.util.List;
 import java.util.Objects;
 
 public abstract class Transport implements Rival {
@@ -30,6 +34,11 @@ public abstract class Transport implements Rival {
     public abstract void printType();
     public abstract void diagnosticsTransport() throws CantPassDiagnostic;
 
+    public abstract void addMechanicForTransport(List<Mechanics> mechanics);
+    public abstract void repairTransport(List<Mechanics> mechanics);
+    public abstract void maintenanceTransport(List<Mechanics> mechanics);
+    public abstract void infoAboutTransport(List<Mechanics> mechanics, List<Drivers> drivers);
+
     public static void diagnostic(Transport... transports) {
         for (Transport transport : transports) {
             try {
@@ -42,6 +51,7 @@ public abstract class Transport implements Rival {
             }
         }
     }
+
     public String getBrand() {
         return brand;
     }

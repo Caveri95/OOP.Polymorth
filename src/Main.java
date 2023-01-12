@@ -1,5 +1,13 @@
+import Mechanics.Mechanics;
 import Transport.*;
 import Drivers.Drivers;
+import Mechanics.TypeAutoRepair;
+
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 public class Main  {
     public static void main(String[] args) {
 
@@ -22,10 +30,10 @@ public class Main  {
         Drivers<Car> oleg = new Drivers<Car>("Иванов", "Олег", "Иванович", "B", 8);
         oleg.drive(ford);
 
-        Drivers<Bus> boris = new Drivers<Bus>("Долгов", "Борис", "Александрович", "I", 4);
+        Drivers<Bus> boris = new Drivers<Bus>("Долгов", "Борис", "Александрович", "D", 4);
          boris.drive(MAZ101);
 
-        Drivers<Track> victor = new Drivers<Track>("Пирогов", "Виктор", "Васильевич", "D", 15);
+        Drivers<Track> victor = new Drivers<Track>("Пирогов", "Виктор", "Васильевич", "C", 15);
         victor.drive(scaniaG380);
 
         MAZ101.printType();
@@ -37,6 +45,43 @@ public class Main  {
         System.out.println(boris);
 
 
-    }
+        List<Drivers> drivers = new ArrayList<>();
+        drivers.add(oleg);
+        drivers.add(boris);
+        drivers.add(victor);
 
+        List<Transport> transports = new ArrayList<>();
+        transports.add(ford);
+        transports.add(hyundai);
+        transports.add(lada);
+        transports.add(volvo);
+        transports.add(MAZ104);
+        transports.add(MAZ103);
+        transports.add(MAZ101);
+        transports.add(MAZ203);
+        transports.add(scaniaG440);
+        transports.add(scaniaP600);
+        transports.add(scaniaG380);
+        transports.add(scaniaR520);
+
+        Mechanics evgeni = new Mechanics("Евгений", "Пирогов", "Rolf", TypeAutoRepair.CAR);
+        Mechanics alexandr = new Mechanics("Александр", "Коронов", "VW", TypeAutoRepair.BUS);
+        Mechanics miron = new Mechanics("Мирон", "Попов", "Avangard", TypeAutoRepair.TRACK);
+        Mechanics dima = new Mechanics("Дмитрий", "Ковалев", "Motors", TypeAutoRepair.MULTI);
+
+        List<Mechanics> mechanics  = new ArrayList<>();
+        mechanics.add(evgeni);
+        mechanics.add(alexandr);
+        mechanics.add(miron);
+        mechanics.add(dima);
+
+
+        MAZ101.addMechanicForTransport(mechanics); // Кто находится в команде по обслуживанию ТС
+
+        scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
+
+        MAZ101.repairTransport(mechanics); // Ремонт ТС
+
+        scaniaG440.maintenanceTransport(mechanics); // ТО ТС
+    }
 }

@@ -1,6 +1,13 @@
 package Transport;
 
-public class Car extends Transport implements Rival{
+import Drivers.Drivers;
+import Mechanics.TypeAutoRepair;
+import Mechanics.Mechanics;
+
+import java.util.List;
+import java.util.Objects;
+
+public class Car extends Transport implements Rival {
 
     private final BodyType bodyType;
 
@@ -51,5 +58,56 @@ public class Car extends Transport implements Rival{
 
     public BodyType getBodyType() {
         return bodyType;
+    }
+
+    @Override
+    public void addMechanicForTransport(List<Mechanics> mechanics) {
+        System.out.println("Механики");
+        for (Mechanics mechanic : mechanics) {
+            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                System.out.println(mechanic.getName() + " " + mechanic.getSurname());
+            }
+        }
+        System.out.println("в команде обслуживания транспортного средства " +
+                getBrand() + " " + getModel());
+    }
+
+    @Override
+    public void repairTransport(List<Mechanics> mechanics) {
+        System.out.println("Механики: ");
+        for (Mechanics mechanic : mechanics) {
+            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                System.out.print(mechanic.getName() + " " +
+                        mechanic.getSurname() + ", ");
+            }
+        }
+        System.out.println("занимаются ремонтом " + getBrand() + " " + getModel());
+    }
+
+    @Override
+    public void maintenanceTransport(List<Mechanics> mechanics) {
+        System.out.println("Механики: ");
+        for (Mechanics mechanic : mechanics) {
+            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                System.out.print(mechanic.getName() + " " +
+                        mechanic.getSurname() + ", ");
+            }
+        }
+        System.out.println("проводят техническое обслуживание " + getBrand() + " " + getModel());
+    }
+
+    public void infoAboutTransport(List<Mechanics> mechanics, List<Drivers> drivers) {
+        System.out.println("Транспортное средство: " + getBrand() + " " + getModel() + ". Техническое обслуживание проводят: ");
+        for (Mechanics mechanic : mechanics) {
+            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                System.out.println(mechanic.getName() + " " +
+                                mechanic.getSurname());
+            }
+        }
+        for (Drivers driver : drivers) {
+            if (Objects.equals(driver.getDriverLicense(), "B")) {
+                System.out.println("Водитель: " + driver.getName() + " " + driver.getSurname() );
+            }
+        }
     }
 }
