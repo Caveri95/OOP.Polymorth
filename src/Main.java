@@ -3,10 +3,7 @@ import Transport.*;
 import Drivers.Drivers;
 import Mechanics.TypeAutoRepair;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Queue;
+import java.util.*;
 
 public class Main  {
     public static void main(String[] args) {
@@ -69,19 +66,59 @@ public class Main  {
         Mechanics miron = new Mechanics("Мирон", "Попов", "Avangard", TypeAutoRepair.TRACK);
         Mechanics dima = new Mechanics("Дмитрий", "Ковалев", "Motors", TypeAutoRepair.MULTI);
 
-        List<Mechanics> mechanics  = new ArrayList<>();
+        ArrayList<Mechanics> mechanics  = new ArrayList<>();
         mechanics.add(evgeni);
         mechanics.add(alexandr);
         mechanics.add(miron);
         mechanics.add(dima);
 
 
-        MAZ101.addMechanicForTransport(mechanics); // Кто находится в команде по обслуживанию ТС
 
-        scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
+
+
+        /*scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
 
         MAZ101.repairTransport(mechanics); // Ремонт ТС
 
         scaniaG440.maintenanceTransport(mechanics); // ТО ТС
+*/
+
+
+
+
+
+        /*Map<Transport, Mechanics> autoMechanic = new HashMap<>();
+
+        autoMechanic.put(ford, evgeni);
+        autoMechanic.put(MAZ101, alexandr);
+        autoMechanic.put(scaniaG380, miron);
+        autoMechanic.put(volvo, dima);
+
+        for (Map.Entry<Transport, Mechanics> value : autoMechanic.entrySet()){
+            System.out.println(value.getKey() + " " + value.getValue());
+        }*/
+
+        scaniaG380.addMechanicForTransport(); // Кто находится в команде по обслуживанию ТС
+
+
+
+
+
+
+
+        /*Map<String, String> vocablurary = new HashMap<>();
+        vocablurary.put("cat", "кошка");
+        vocablurary.put("dog", "собака");
+        vocablurary.put("fish", "рыба");
+
+        System.out.println(vocablurary);
+
+        System.out.println(vocablurary.containsKey("cat"));
+        System.out.println(vocablurary.containsValue("кошка"));
+
+        for (Map.Entry<String, String> contact: vocablurary.entrySet()) {
+            System.out.println("Контакт " + contact.getKey() + ": " + contact.getValue());
+        }*/
+
     }
 }

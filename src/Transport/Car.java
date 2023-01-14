@@ -4,12 +4,15 @@ import Drivers.Drivers;
 import Mechanics.TypeAutoRepair;
 import Mechanics.Mechanics;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
 public class Car extends Transport implements Rival {
 
     private final BodyType bodyType;
+
+
 
     public Car(String brand, String model, double engineVol, BodyType bodyType) {
         super(brand, model, engineVol);
@@ -61,7 +64,7 @@ public class Car extends Transport implements Rival {
     }
 
     @Override
-    public void addMechanicForTransport(List<Mechanics> mechanics) {
+    public void addMechanicForTransport() {
         System.out.println("Механики");
         for (Mechanics mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
@@ -73,7 +76,7 @@ public class Car extends Transport implements Rival {
     }
 
     @Override
-    public void repairTransport(List<Mechanics> mechanics) {
+    public void repairTransport() {
         System.out.println("Механики: ");
         for (Mechanics mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {

@@ -3,6 +3,9 @@ package Transport;
 import Drivers.Drivers;
 import Mechanics.Mechanics;
 
+
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
@@ -10,6 +13,10 @@ public abstract class Transport implements Rival {
     private final String brand;
     private final String model;
     private final double engineVol;
+    public ArrayList<Mechanics> mechanics;
+
+    public Drivers drivers;
+
 
     public Transport(String brand, String model, double engineVol) {
         if (brand != null && !brand.isEmpty() && !brand.isBlank()) {
@@ -34,8 +41,8 @@ public abstract class Transport implements Rival {
     public abstract void printType();
     public abstract void diagnosticsTransport() throws CantPassDiagnostic;
 
-    public abstract void addMechanicForTransport(List<Mechanics> mechanics);
-    public abstract void repairTransport(List<Mechanics> mechanics);
+    public abstract void addMechanicForTransport();
+    public abstract void repairTransport();
     public abstract void maintenanceTransport(List<Mechanics> mechanics);
     public abstract void infoAboutTransport(List<Mechanics> mechanics, List<Drivers> drivers);
 

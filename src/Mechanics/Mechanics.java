@@ -1,11 +1,12 @@
 package Mechanics;
 
+import java.util.ArrayList;
+
 public class Mechanics {
 
     private final String name;
     private final String surname;
     private final String companyWork;
-
     private final TypeAutoRepair typeAutoRepair;
 
     public Mechanics(String name, String surname, String companyWork, TypeAutoRepair typeAutoRepair) {
@@ -31,7 +32,15 @@ public class Mechanics {
         return typeAutoRepair;
     }
 
+    public void runTO() {
+        System.out.println(getName() + " " + getSurname() + " проводит техобслуживание");
+    }
+
+    public void maintenance() {
+        System.out.println(getName() + " " + getSurname() + " чинит автомобиль");
+    }
     @Override
+
     public String toString() {
         return "Механик: " +
                 "имя - " + name +
