@@ -12,6 +12,7 @@ public class Track extends Transport implements Rival {
 
     private final Weight weight;
 
+
     public Track(String brand, String model, double engineVol, Weight weight) {
         super(brand, model, engineVol);
         this.weight = weight;
@@ -59,14 +60,16 @@ public class Track extends Transport implements Rival {
     @Override
     public void addMechanicForTransport() {
 
-            System.out.println("Механики");
+        if (Mechanics != null) {
             for (Mechanics mechanic : mechanics) {
                 if (mechanic.getTypeAutoRepair() == TypeAutoRepair.TRACK || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                    mechanics.add(mechanic);
                     System.out.println(mechanic.getName() + " " + mechanic.getSurname());
                 }
             }
-            System.out.println("в команде обслуживания транспортного средства " +
-                    getBrand() + " " + getModel());
+            mechanics.forEach(System.out::println);
+        }
+
     }
 
     @Override

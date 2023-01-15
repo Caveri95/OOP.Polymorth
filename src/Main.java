@@ -47,6 +47,7 @@ public class Main  {
         drivers.add(boris);
         drivers.add(victor);
 
+
         List<Transport> transports = new ArrayList<>();
         transports.add(ford);
         transports.add(hyundai);
@@ -71,6 +72,12 @@ public class Main  {
         mechanics.add(alexandr);
         mechanics.add(miron);
         mechanics.add(dima);
+
+
+        MAZ101.addMechanicForTransport(); // Кто находится в команде по обслуживанию ТС
+
+
+
 
 
 
@@ -98,7 +105,6 @@ public class Main  {
             System.out.println(value.getKey() + " " + value.getValue());
         }*/
 
-        scaniaG380.addMechanicForTransport(); // Кто находится в команде по обслуживанию ТС
 
 
 

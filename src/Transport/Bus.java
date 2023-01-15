@@ -53,15 +53,14 @@ public class Bus extends Transport implements Rival {
 
     @Override
     public void addMechanicForTransport() {
-        if (mechanics != null) {
-            System.out.println("Механики");
+        if (Mechanics != null) {
             for (Mechanics mechanic : mechanics) {
                 if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                    mechanics.add(mechanic);
                     System.out.println(mechanic.getName() + " " + mechanic.getSurname());
                 }
             }
-            System.out.println("в команде обслуживания транспортного средства " +
-                    getBrand() + " " + getModel());
+            mechanics.forEach(System.out::println);
         }
     }
 

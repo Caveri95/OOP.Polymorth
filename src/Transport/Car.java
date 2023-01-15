@@ -12,8 +12,6 @@ public class Car extends Transport implements Rival {
 
     private final BodyType bodyType;
 
-
-
     public Car(String brand, String model, double engineVol, BodyType bodyType) {
         super(brand, model, engineVol);
         this.bodyType = bodyType;
@@ -65,14 +63,15 @@ public class Car extends Transport implements Rival {
 
     @Override
     public void addMechanicForTransport() {
-        System.out.println("Механики");
-        for (Mechanics mechanic : mechanics) {
-            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
-                System.out.println(mechanic.getName() + " " + mechanic.getSurname());
+        if (Mechanics != null) {
+            for (Mechanics mechanic : mechanics) {
+                if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                    mechanics.add(mechanic);
+                    System.out.println(mechanic.getName() + " " + mechanic.getSurname());
+                }
             }
+            mechanics.forEach(System.out::println);
         }
-        System.out.println("в команде обслуживания транспортного средства " +
-                getBrand() + " " + getModel());
     }
 
     @Override

@@ -13,9 +13,10 @@ public abstract class Transport implements Rival {
     private final String brand;
     private final String model;
     private final double engineVol;
-    public ArrayList<Mechanics> mechanics;
+    public ArrayList<Mechanics> mechanics = new ArrayList<>();;
 
     public Drivers drivers;
+    public Mechanics Mechanics;
 
 
     public Transport(String brand, String model, double engineVol) {
@@ -93,4 +94,19 @@ public abstract class Transport implements Rival {
         return Objects.hash(brand, model, engineVol);
     }
 
+    public ArrayList<Mechanics> getMechanics() {
+        return mechanics;
+    }
+
+    public void setMechanics(ArrayList<Mechanics> mechanics) {
+        this.mechanics = mechanics;
+    }
+
+    public Drivers getDrivers() {
+        return drivers;
+    }
+
+    public void setDrivers(Drivers drivers) {
+        this.drivers = drivers;
+    }
 }
