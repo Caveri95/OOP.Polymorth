@@ -1,7 +1,7 @@
 package Transport;
 
 import Drivers.Drivers;
-import Mechanics.Mechanics;
+import Mechanics.Mechanic;
 import Mechanics.TypeAutoRepair;
 
 import java.util.ArrayList;
@@ -10,6 +10,7 @@ import java.util.Objects;
 
 public class Bus extends Transport implements Rival {
     private final BusCapacity busCapacity;
+    public ArrayList<Mechanic> mechanicsForBus = new ArrayList<>();
 
 
     public Bus(String brand, String model, double engineVol, BusCapacity busCapacity) {
@@ -52,34 +53,37 @@ public class Bus extends Transport implements Rival {
     }
 
     @Override
-    public void addMechanicForTransport() {
-        if (Mechanics != null) {
-            for (Mechanics mechanic : mechanics) {
+    public void addMechanicForTransport(List<Mechanic> mechanics) {
+        if (mechanics != null) {
+            System.out.println("К транспорту " + getBrand() + " " + getModel() + " добавлены механики: ");
+            for (Mechanic mechanic : mechanics) {
                 if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
-                    mechanics.add(mechanic);
-                    System.out.println(mechanic.getName() + " " + mechanic.getSurname());
+                    mechanicsForBus.add(mechanic);
                 }
             }
-            mechanics.forEach(System.out::println);
+
+            System.out.println(mechanics);
         }
     }
 
     @Override
-    public void repairTransport() {
-        System.out.println("Механики: ");
-        for (Mechanics mechanic : mechanics) {
-            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
-                System.out.print(mechanic.getName() + " " +
-                        mechanic.getSurname() + ", ");
+    public void repairTransport(List<Mechanic> mechanics) {
+        if (mechanics != null) {
+            System.out.println("Механики: ");
+            for (Mechanic mechanic : mechanics) {
+                if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                    System.out.print(mechanic.getName() + " " +
+                            mechanic.getSurname() + ", ");
+                }
             }
+            System.out.println("занимаются ремонтом " + getBrand() + " " + getModel());
         }
-        System.out.println("занимаются ремонтом " + getBrand() + " " + getModel());
     }
 
     @Override
-    public void maintenanceTransport(List<Mechanics> mechanics) {
+    public void maintenanceTransport(List<Mechanic> mechanics) {
         System.out.println("Механики: ");
-        for (Mechanics mechanic : mechanics) {
+        for (Mechanic mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
                 System.out.print(mechanic.getName() + " " +
                         mechanic.getSurname() + ", ");
@@ -89,9 +93,9 @@ public class Bus extends Transport implements Rival {
     }
 
 
-    public void infoAboutTransport(List<Mechanics> mechanics, List<Drivers> drivers) {
+    public void infoAboutTransport(List<Mechanic> mechanics, List<Drivers> drivers) {
         System.out.println("Транспортное средство: " + getBrand() + " " + getModel() + ". Техническое обслуживание проводят: ");
-        for (Mechanics mechanic : mechanics) {
+        for (Mechanic mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
                 System.out.println(mechanic.getName() + " " +
                         mechanic.getSurname());

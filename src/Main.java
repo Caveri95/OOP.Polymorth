@@ -1,4 +1,5 @@
-import Mechanics.Mechanics;
+import Mechanics.Mechanic;
+import Mechanics.Mechanic;
 import Transport.*;
 import Drivers.Drivers;
 import Mechanics.TypeAutoRepair;
@@ -42,7 +43,7 @@ public class Main  {
         System.out.println(boris);
 
 
-        List<Drivers> drivers = new ArrayList<>();
+        ArrayList<Drivers> drivers = new ArrayList<>();
         drivers.add(oleg);
         drivers.add(boris);
         drivers.add(victor);
@@ -62,55 +63,40 @@ public class Main  {
         transports.add(scaniaG380);
         transports.add(scaniaR520);
 
-        Mechanics evgeni = new Mechanics("Евгений", "Пирогов", "Rolf", TypeAutoRepair.CAR);
-        Mechanics alexandr = new Mechanics("Александр", "Коронов", "VW", TypeAutoRepair.BUS);
-        Mechanics miron = new Mechanics("Мирон", "Попов", "Avangard", TypeAutoRepair.TRACK);
-        Mechanics dima = new Mechanics("Дмитрий", "Ковалев", "Motors", TypeAutoRepair.MULTI);
+        Mechanic evgeni = new Mechanic("Евгений", "Пирогов", "Rolf", TypeAutoRepair.CAR);
+        Mechanic alexandr = new Mechanic("Александр", "Коронов", "VW", TypeAutoRepair.BUS);
+        Mechanic miron = new Mechanic("Мирон", "Попов", "Avangard", TypeAutoRepair.TRACK);
+        Mechanic yra = new Mechanic("Юрий", "Попов", "Avangards", TypeAutoRepair.TRACK);
+        Mechanic dima = new Mechanic("Дмитрий", "Ковалев", "Motors", TypeAutoRepair.MULTI);
 
-        ArrayList<Mechanics> mechanics  = new ArrayList<>();
+
+        ArrayList<Mechanic> mechanics  = new ArrayList<>();
+
         mechanics.add(evgeni);
         mechanics.add(alexandr);
         mechanics.add(miron);
         mechanics.add(dima);
+        mechanics.add(yra);
 
 
-        MAZ101.addMechanicForTransport(); // Кто находится в команде по обслуживанию ТС
+        MAZ101.addMechanicForTransport(mechanics); // Кто находится в команде по обслуживанию ТС
 
-
-
-
-
-
-
-
-        /*scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
+        scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
 
         MAZ101.repairTransport(mechanics); // Ремонт ТС
 
         scaniaG440.maintenanceTransport(mechanics); // ТО ТС
-*/
 
-
-
-
-
-        /*Map<Transport, Mechanics> autoMechanic = new HashMap<>();
+        /*Map<Transport, Mechanic> autoMechanic = new HashMap<>();
 
         autoMechanic.put(ford, evgeni);
         autoMechanic.put(MAZ101, alexandr);
         autoMechanic.put(scaniaG380, miron);
         autoMechanic.put(volvo, dima);
 
-        for (Map.Entry<Transport, Mechanics> value : autoMechanic.entrySet()){
+        for (Map.Entry<Transport, Mechanic> value : autoMechanic.entrySet()){
             System.out.println(value.getKey() + " " + value.getValue());
         }*/
-
-
-
-
-
-
-
 
         /*Map<String, String> vocablurary = new HashMap<>();
         vocablurary.put("cat", "кошка");

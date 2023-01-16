@@ -1,15 +1,14 @@
 package Mechanics;
 
-import java.util.ArrayList;
-
-public class Mechanics {
+public class   Mechanic {
 
     private final String name;
     private final String surname;
     private final String companyWork;
     private final TypeAutoRepair typeAutoRepair;
 
-    public Mechanics(String name, String surname, String companyWork, TypeAutoRepair typeAutoRepair) {
+
+    public Mechanic(String name, String surname, String companyWork, TypeAutoRepair typeAutoRepair) {
         this.name = name;
         this.surname = surname;
         this.companyWork = companyWork;
@@ -47,4 +46,6 @@ public class Mechanics {
                 ", фамилия - " + surname +
                 ", компания - " + companyWork;
     }
+
+
 }

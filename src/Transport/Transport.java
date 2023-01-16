@@ -1,9 +1,7 @@
 package Transport;
 
 import Drivers.Drivers;
-import Mechanics.Mechanics;
-
-
+import Mechanics.Mechanic;
 import java.lang.reflect.Array;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,11 +11,7 @@ public abstract class Transport implements Rival {
     private final String brand;
     private final String model;
     private final double engineVol;
-    public ArrayList<Mechanics> mechanics = new ArrayList<>();;
-
-    public Drivers drivers;
-    public Mechanics Mechanics;
-
+    public ArrayList<Mechanic> mechanics;
 
     public Transport(String brand, String model, double engineVol) {
         if (brand != null && !brand.isEmpty() && !brand.isBlank()) {
@@ -42,10 +36,10 @@ public abstract class Transport implements Rival {
     public abstract void printType();
     public abstract void diagnosticsTransport() throws CantPassDiagnostic;
 
-    public abstract void addMechanicForTransport();
-    public abstract void repairTransport();
-    public abstract void maintenanceTransport(List<Mechanics> mechanics);
-    public abstract void infoAboutTransport(List<Mechanics> mechanics, List<Drivers> drivers);
+    public abstract void addMechanicForTransport(List<Mechanic> mechanics);
+    public abstract void repairTransport(List<Mechanic> mechanics);
+    public abstract void maintenanceTransport(List<Mechanic> mechanics);
+    public abstract void infoAboutTransport(List<Mechanic> mechanics, List<Drivers> drivers);
 
     public static void diagnostic(Transport... transports) {
         for (Transport transport : transports) {
@@ -94,19 +88,15 @@ public abstract class Transport implements Rival {
         return Objects.hash(brand, model, engineVol);
     }
 
-    public ArrayList<Mechanics> getMechanics() {
+    public ArrayList<Mechanic> getMechanic() {
         return mechanics;
     }
 
-    public void setMechanics(ArrayList<Mechanics> mechanics) {
+
+
+    public void setMechanicsOfTransport(ArrayList<Mechanic> mechanics) {
         this.mechanics = mechanics;
     }
 
-    public Drivers getDrivers() {
-        return drivers;
-    }
 
-    public void setDrivers(Drivers drivers) {
-        this.drivers = drivers;
-    }
 }
