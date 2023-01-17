@@ -11,9 +11,6 @@ import java.util.Objects;
 public class Track extends Transport implements Rival {
 
     private final Weight weight;
-    public ArrayList<Mechanic> mechanicsForTrack = new ArrayList<>();
-
-
 
     public Track(String brand, String model, double engineVol, Weight weight) {
         super(brand, model, engineVol);
@@ -60,26 +57,27 @@ public class Track extends Transport implements Rival {
     }
 
     @Override
-    public void addMechanicForTransport(List<Mechanic> mechanics) {
-        if (mechanics != null) {
-            System.out.println("К транспорту " + getBrand() + " " + getModel() + " добавлены механики: ");
-            for (Mechanic mechanic : mechanics) {
-                if (mechanic.getTypeAutoRepair() == TypeAutoRepair.TRACK || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
-                    mechanicsForTrack.add(mechanic);
-                }
-            }
-            System.out.println(mechanicsForTrack);
-        }
+    public void addMechanic(Mechanic mechanic) {
+
     }
 
     @Override
-    public void repairTransport(List<Mechanic> mechanics) {
-        System.out.println("Механики: ");
+    public void addMechanicForTransport(List<Mechanic> mechanics) {
+        System.out.println("К транспорту " + getBrand() + " " + getModel() + " добавлены механики: ");
         for (Mechanic mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.TRACK || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                super.mechanics.add(mechanic);
+            }
+        }
+        System.out.println(super.mechanics);
+    }
 
-                System.out.print(mechanic.getName() + " " +
-                        mechanic.getSurname() + ", ");
+    @Override
+    public void repairTransport() {
+        System.out.println("Механики: ");
+        for (Mechanic mechanic : getMechanics()) {
+            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                System.out.print(mechanic.getName() + " " + mechanic.getSurname() + ", ");
             }
         }
         System.out.println("занимаются ремонтом " + getBrand() + " " + getModel());
@@ -97,7 +95,8 @@ public class Track extends Transport implements Rival {
         System.out.println("проводят техническое обслуживание " + getBrand() + " " + getModel());
     }
 
-    public void infoAboutTransport(List<Mechanic> mechanics, List<Drivers> drivers) {
+    @Override
+    public void infoAboutTransport(List<Mechanic> mechanics, ArrayList<Drivers> drivers) {
         System.out.println("Транспортное средство: " + getBrand() + " " + getModel() + ". Техническое обслуживание проводят: ");
         for (Mechanic mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.TRACK || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
@@ -105,7 +104,7 @@ public class Track extends Transport implements Rival {
                         mechanic.getSurname());
             }
         }
-        for (Drivers driver : drivers) {
+        for (Drivers driver: drivers) {
             if (Objects.equals(driver.getDriverLicense(), "C")) {
                 System.out.println("Водитель: " + driver.getName() + " " + driver.getSurname() );
             }

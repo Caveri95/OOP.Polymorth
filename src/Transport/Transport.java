@@ -11,7 +11,11 @@ public abstract class Transport implements Rival {
     private final String brand;
     private final String model;
     private final double engineVol;
-    public ArrayList<Mechanic> mechanics;
+    protected final ArrayList<Mechanic> mechanics = new ArrayList<>();
+    protected final ArrayList<Drivers> drivers = new ArrayList<>();
+
+
+
 
     public Transport(String brand, String model, double engineVol) {
         if (brand != null && !brand.isEmpty() && !brand.isBlank()) {
@@ -36,10 +40,11 @@ public abstract class Transport implements Rival {
     public abstract void printType();
     public abstract void diagnosticsTransport() throws CantPassDiagnostic;
 
+    public abstract void addMechanic(Mechanic mechanic);
     public abstract void addMechanicForTransport(List<Mechanic> mechanics);
-    public abstract void repairTransport(List<Mechanic> mechanics);
+    public abstract void repairTransport();
     public abstract void maintenanceTransport(List<Mechanic> mechanics);
-    public abstract void infoAboutTransport(List<Mechanic> mechanics, List<Drivers> drivers);
+    public abstract void infoAboutTransport(List<Mechanic> mechanics, ArrayList<Drivers> drivers);
 
     public static void diagnostic(Transport... transports) {
         for (Transport transport : transports) {
@@ -88,14 +93,12 @@ public abstract class Transport implements Rival {
         return Objects.hash(brand, model, engineVol);
     }
 
-    public ArrayList<Mechanic> getMechanic() {
+    public ArrayList<Mechanic> getMechanics() {
         return mechanics;
     }
 
-
-
-    public void setMechanicsOfTransport(ArrayList<Mechanic> mechanics) {
-        this.mechanics = mechanics;
+    public ArrayList<Drivers> getDrivers() {
+        return drivers;
     }
 
 

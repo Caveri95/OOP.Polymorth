@@ -25,6 +25,7 @@ public class Main  {
         Track scaniaP600 = new Track("Скания", "P 600", 14, null);
 
 
+
         Drivers<Car> oleg = new Drivers<Car>("Иванов", "Олег", "Иванович", "B", 8);
         oleg.drive(ford);
 
@@ -79,11 +80,10 @@ public class Main  {
         mechanics.add(yra);
 
 
+        scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
         MAZ101.addMechanicForTransport(mechanics); // Кто находится в команде по обслуживанию ТС
 
-        scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
-
-        MAZ101.repairTransport(mechanics); // Ремонт ТС
+        MAZ104.repairTransport(); // Ремонт ТС
 
         scaniaG440.maintenanceTransport(mechanics); // ТО ТС
 

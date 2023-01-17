@@ -58,26 +58,28 @@ public class Car extends Transport implements Rival {
         System.out.println("Автомашина " + getBrand() + " " + getModel() + " может пройти диагностику");
     }
 
+    @Override
+    public void addMechanic(Mechanic mechanic) {
+
+    }
+
     public BodyType getBodyType() {
         return bodyType;
     }
 
     @Override
     public void addMechanicForTransport(List<Mechanic> mechanics) {
-        if (mechanics != null) {
-            System.out.println("К транспорту " + getBrand() + " " + getModel() + " добавлены механики: ");
-            for (Mechanic mechanic : mechanics) {
-                if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
-                    mechanicsForCar.add(mechanic);
-                }
+        System.out.println("К транспорту " + getBrand() + " " + getModel() + " добавлены механики: ");
+        for (Mechanic mechanic : mechanics) {
+            if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
+                super.mechanics.add(mechanic);
             }
-
-            System.out.println(mechanicsForCar);
         }
+        System.out.println(super.mechanics);
     }
 
     @Override
-    public void repairTransport(List<Mechanic> mechanics) {
+    public void repairTransport() {
         System.out.println("Механики: ");
         for (Mechanic mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
@@ -100,7 +102,7 @@ public class Car extends Transport implements Rival {
         System.out.println("проводят техническое обслуживание " + getBrand() + " " + getModel());
     }
 
-    public void infoAboutTransport(List<Mechanic> mechanics, List<Drivers> drivers) {
+    public void infoAboutTransport(List<Mechanic> mechanics, ArrayList<Drivers> drivers) {
         System.out.println("Транспортное средство: " + getBrand() + " " + getModel() + ". Техническое обслуживание проводят: ");
         for (Mechanic mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {

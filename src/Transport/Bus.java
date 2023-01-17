@@ -10,8 +10,6 @@ import java.util.Objects;
 
 public class Bus extends Transport implements Rival {
     private final BusCapacity busCapacity;
-    public ArrayList<Mechanic> mechanicsForBus = new ArrayList<>();
-
 
     public Bus(String brand, String model, double engineVol, BusCapacity busCapacity) {
         super(brand, model, engineVol);
@@ -54,21 +52,17 @@ public class Bus extends Transport implements Rival {
 
     @Override
     public void addMechanicForTransport(List<Mechanic> mechanics) {
-        if (mechanics != null) {
             System.out.println("К транспорту " + getBrand() + " " + getModel() + " добавлены механики: ");
             for (Mechanic mechanic : mechanics) {
                 if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
-                    mechanicsForBus.add(mechanic);
+                    super.mechanics.add(mechanic);
                 }
             }
-
-            System.out.println(mechanics);
-        }
+            System.out.println(super.mechanics);
     }
 
     @Override
-    public void repairTransport(List<Mechanic> mechanics) {
-        if (mechanics != null) {
+    public void repairTransport() {
             System.out.println("Механики: ");
             for (Mechanic mechanic : mechanics) {
                 if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
@@ -77,7 +71,6 @@ public class Bus extends Transport implements Rival {
                 }
             }
             System.out.println("занимаются ремонтом " + getBrand() + " " + getModel());
-        }
     }
 
     @Override
@@ -93,7 +86,7 @@ public class Bus extends Transport implements Rival {
     }
 
 
-    public void infoAboutTransport(List<Mechanic> mechanics, List<Drivers> drivers) {
+    public void infoAboutTransport(List<Mechanic> mechanics, ArrayList<Drivers> drivers) {
         System.out.println("Транспортное средство: " + getBrand() + " " + getModel() + ". Техническое обслуживание проводят: ");
         for (Mechanic mechanic : mechanics) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.BUS || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
@@ -111,6 +104,12 @@ public class Bus extends Transport implements Rival {
     public void diagnosticsTransport() throws CantPassDiagnostic {
         throw new CantPassDiagnostic(" Автобус не может проходить диагностику", this);
     }
+
+    @Override
+    public void addMechanic(Mechanic mechanic) {
+
+    }
+
     public BusCapacity getBusCapacity() {
         return busCapacity;
     }
