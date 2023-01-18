@@ -58,10 +58,6 @@ public class Car extends Transport implements Rival {
         System.out.println("Автомашина " + getBrand() + " " + getModel() + " может пройти диагностику");
     }
 
-    @Override
-    public void addMechanic(Mechanic mechanic) {
-
-    }
 
     public BodyType getBodyType() {
         return bodyType;
@@ -79,6 +75,17 @@ public class Car extends Transport implements Rival {
     }
 
     @Override
+    public void addDriverForTransport(List<Drivers> drivers) {
+        System.out.println("К транспорту " + getBrand() + " " + getModel() + " добавлены водители: ");
+        for (Drivers driver : drivers) {
+            if (driver.getDriverLicense().equals("B")) {
+                super.drivers.add(driver);
+            }
+        }
+        System.out.println(super.drivers);
+    }
+
+    @Override
     public void repairTransport() {
         System.out.println("Механики: ");
         for (Mechanic mechanic : mechanics) {
@@ -91,9 +98,9 @@ public class Car extends Transport implements Rival {
     }
 
     @Override
-    public void maintenanceTransport(List<Mechanic> mechanics) {
+    public void maintenanceTransport() {
         System.out.println("Механики: ");
-        for (Mechanic mechanic : mechanics) {
+        for (Mechanic mechanic : getMechanics()) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
                 System.out.print(mechanic.getName() + " " +
                         mechanic.getSurname() + ", ");
@@ -102,15 +109,15 @@ public class Car extends Transport implements Rival {
         System.out.println("проводят техническое обслуживание " + getBrand() + " " + getModel());
     }
 
-    public void infoAboutTransport(List<Mechanic> mechanics, ArrayList<Drivers> drivers) {
+    public void infoAboutTransport() {
         System.out.println("Транспортное средство: " + getBrand() + " " + getModel() + ". Техническое обслуживание проводят: ");
-        for (Mechanic mechanic : mechanics) {
+        for (Mechanic mechanic : getMechanics()) {
             if (mechanic.getTypeAutoRepair() == TypeAutoRepair.CAR || mechanic.getTypeAutoRepair() == TypeAutoRepair.MULTI) {
                 System.out.println(mechanic.getName() + " " +
                                 mechanic.getSurname());
             }
         }
-        for (Drivers driver : drivers) {
+        for (Drivers driver : getDrivers()) {
             if (Objects.equals(driver.getDriverLicense(), "B")) {
                 System.out.println("Водитель: " + driver.getName() + " " + driver.getSurname() );
             }

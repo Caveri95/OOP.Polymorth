@@ -4,6 +4,7 @@ import Transport.*;
 import Drivers.Drivers;
 import Mechanics.TypeAutoRepair;
 
+
 import java.util.*;
 
 public class Main  {
@@ -51,10 +52,11 @@ public class Main  {
 
 
         List<Transport> transports = new ArrayList<>();
+
         transports.add(ford);
         transports.add(hyundai);
         transports.add(lada);
-        transports.add(volvo);
+        transports.add(ford);
         transports.add(MAZ104);
         transports.add(MAZ103);
         transports.add(MAZ101);
@@ -63,6 +65,8 @@ public class Main  {
         transports.add(scaniaP600);
         transports.add(scaniaG380);
         transports.add(scaniaR520);
+
+
 
         Mechanic evgeni = new Mechanic("Евгений", "Пирогов", "Rolf", TypeAutoRepair.CAR);
         Mechanic alexandr = new Mechanic("Александр", "Коронов", "VW", TypeAutoRepair.BUS);
@@ -79,38 +83,34 @@ public class Main  {
         mechanics.add(dima);
         mechanics.add(yra);
 
+        scaniaG380.addDriverForTransport(drivers);
+        scaniaG380.addMechanicForTransport(mechanics); // Кто находится в команде по обслуживанию ТС
 
-        scaniaG380.infoAboutTransport(mechanics, drivers); // Водители и механики ТС
-        MAZ101.addMechanicForTransport(mechanics); // Кто находится в команде по обслуживанию ТС
 
-        MAZ104.repairTransport(); // Ремонт ТС
+        scaniaG380.repairTransport(); // Ремонт ТС
+        scaniaG380.maintenanceTransport(); // ТО ТС
+        scaniaG380.infoAboutTransport(); // Водители и механики ТС
 
-        scaniaG440.maintenanceTransport(mechanics); // ТО ТС
+        Map<Transport, Mechanic> autoMechanic = new HashMap<>();
 
-        /*Map<Transport, Mechanic> autoMechanic = new HashMap<>();
+        /*autoMechanic.put(ford, evgeni);
+        autoMechanic.put(hyundai, dima);
+        autoMechanic.put(lada, dima);
+        autoMechanic.put(volvo, evgeni);
+        autoMechanic.put(MAZ101, dima);
+        autoMechanic.put(MAZ103, alexandr);
+        autoMechanic.put(MAZ104, dima);
+        autoMechanic.put(MAZ203, alexandr);
+        autoMechanic.put(scaniaG380, yra);
+        autoMechanic.put(scaniaP600, miron);
+        autoMechanic.put(scaniaG440, yra);
+        autoMechanic.put(scaniaR520, dima);*/
 
-        autoMechanic.put(ford, evgeni);
-        autoMechanic.put(MAZ101, alexandr);
-        autoMechanic.put(scaniaG380, miron);
-        autoMechanic.put(volvo, dima);
-
-        for (Map.Entry<Transport, Mechanic> value : autoMechanic.entrySet()){
-            System.out.println(value.getKey() + " " + value.getValue());
+        /*for (Map.Entry<Transport, Mechanic> value : autoMechanic.entrySet()){
+            System.out.println(value.getKey() + ", " + value.getValue());
         }*/
 
-        /*Map<String, String> vocablurary = new HashMap<>();
-        vocablurary.put("cat", "кошка");
-        vocablurary.put("dog", "собака");
-        vocablurary.put("fish", "рыба");
-
-        System.out.println(vocablurary);
-
-        System.out.println(vocablurary.containsKey("cat"));
-        System.out.println(vocablurary.containsValue("кошка"));
-
-        for (Map.Entry<String, String> contact: vocablurary.entrySet()) {
-            System.out.println("Контакт " + contact.getKey() + ": " + contact.getValue());
-        }*/
-
+        //ford.chekDoubleElements(transports);
+        //transports.forEach(System.out::println);
     }
 }

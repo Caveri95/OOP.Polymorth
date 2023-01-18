@@ -12,7 +12,7 @@ public abstract class Transport implements Rival {
     private final String model;
     private final double engineVol;
     protected final ArrayList<Mechanic> mechanics = new ArrayList<>();
-    protected final ArrayList<Drivers> drivers = new ArrayList<>();
+    protected ArrayList<Drivers> drivers = new ArrayList<>();
 
 
 
@@ -40,11 +40,12 @@ public abstract class Transport implements Rival {
     public abstract void printType();
     public abstract void diagnosticsTransport() throws CantPassDiagnostic;
 
-    public abstract void addMechanic(Mechanic mechanic);
+
+    public abstract void addDriverForTransport(List<Drivers> drivers);
     public abstract void addMechanicForTransport(List<Mechanic> mechanics);
     public abstract void repairTransport();
-    public abstract void maintenanceTransport(List<Mechanic> mechanics);
-    public abstract void infoAboutTransport(List<Mechanic> mechanics, ArrayList<Drivers> drivers);
+    public abstract void maintenanceTransport();
+    public abstract void infoAboutTransport();
 
     public static void diagnostic(Transport... transports) {
         for (Transport transport : transports) {
@@ -100,6 +101,28 @@ public abstract class Transport implements Rival {
     public ArrayList<Drivers> getDrivers() {
         return drivers;
     }
+    public void chekDoubleElements(List<?> list) {
+        int listSizeBefore = list.size();
+        System.out.println("Размер листа до проверки составляет: " + listSizeBefore);
+        for (int i = 0; i < list.size(); i++) {
+            Object object1 = list.get(i);
+            for (int j = list.size() - 1; j > i; j--) {
+                if (object1.hashCode() == list.get(j).hashCode() && list.get(j).equals(object1)) {
+                    System.out.println("Найден повторяющийся объект: " + list.get(j) + " на строке номер " +
+                            i + " и " + j);
+                    list.remove(j);
+                }
+            }
+        }
+        System.out.println("После проверки размер списка составляет: " + list.size());
+
+    }
+
+
+
+
+
+
 
 
 }

@@ -1,5 +1,6 @@
 package Mechanics;
 
+import java.util.List;
 public class   Mechanic {
 
     private final String name;
@@ -46,6 +47,8 @@ public class   Mechanic {
                 ", фамилия - " + surname +
                 ", компания - " + companyWork;
     }
+
+
 
 
 
