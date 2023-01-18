@@ -101,7 +101,7 @@ public abstract class Transport implements Rival {
     public ArrayList<Drivers> getDrivers() {
         return drivers;
     }
-    public void chekDoubleElements(List<?> list) {
+    /*public void chekDoubleElements(List<?> list) {
         int listSizeBefore = list.size();
         System.out.println("Размер листа до проверки составляет: " + listSizeBefore);
         for (int i = 0; i < list.size(); i++) {
@@ -115,8 +115,7 @@ public abstract class Transport implements Rival {
             }
         }
         System.out.println("После проверки размер списка составляет: " + list.size());
-
-    }
+    }*/
 
 
 

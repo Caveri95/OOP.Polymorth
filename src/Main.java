@@ -93,22 +93,22 @@ public class Main  {
 
         Map<Transport, Mechanic> autoMechanic = new HashMap<>();
 
-        /*autoMechanic.put(ford, evgeni);
+        autoMechanic.put(ford, evgeni);
         autoMechanic.put(hyundai, dima);
         autoMechanic.put(lada, dima);
         autoMechanic.put(volvo, evgeni);
         autoMechanic.put(MAZ101, dima);
-        autoMechanic.put(MAZ103, alexandr);
-        autoMechanic.put(MAZ104, dima);
+        autoMechanic.put(MAZ103, alexandr); //  Занесли два одиннаковых значения
+        autoMechanic.put(MAZ103, alexandr); //  Занесли два одиннаковых значения
         autoMechanic.put(MAZ203, alexandr);
         autoMechanic.put(scaniaG380, yra);
         autoMechanic.put(scaniaP600, miron);
         autoMechanic.put(scaniaG440, yra);
-        autoMechanic.put(scaniaR520, dima);*/
+        autoMechanic.put(scaniaR520, dima);
 
-        /*for (Map.Entry<Transport, Mechanic> value : autoMechanic.entrySet()){
+        for (Map.Entry<Transport, Mechanic> value : autoMechanic.entrySet()){
             System.out.println(value.getKey() + ", " + value.getValue());
-        }*/
+        }
 
         //ford.chekDoubleElements(transports);
         //transports.forEach(System.out::println);
