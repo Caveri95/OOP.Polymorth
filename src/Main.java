@@ -26,7 +26,6 @@ public class Main  {
         Track scaniaP600 = new Track("Скания", "P 600", 14, null);
 
 
-
         Drivers<Car> oleg = new Drivers<Car>("Иванов", "Олег", "Иванович", "B", 8);
         oleg.drive(ford);
 
@@ -42,9 +41,6 @@ public class Main  {
 
         Transport.diagnostic(ford, MAZ101, scaniaG380, hyundai);
 
-        System.out.println(boris);
-
-
         ArrayList<Drivers> drivers = new ArrayList<>();
         drivers.add(oleg);
         drivers.add(boris);
@@ -52,7 +48,6 @@ public class Main  {
 
 
         List<Transport> transports = new ArrayList<>();
-
         transports.add(ford);
         transports.add(hyundai);
         transports.add(lada);
@@ -66,17 +61,13 @@ public class Main  {
         transports.add(scaniaG380);
         transports.add(scaniaR520);
 
-
-
         Mechanic evgeni = new Mechanic("Евгений", "Пирогов", "Rolf", TypeAutoRepair.CAR);
         Mechanic alexandr = new Mechanic("Александр", "Коронов", "VW", TypeAutoRepair.BUS);
         Mechanic miron = new Mechanic("Мирон", "Попов", "Avangard", TypeAutoRepair.TRACK);
         Mechanic yra = new Mechanic("Юрий", "Попов", "Avangards", TypeAutoRepair.TRACK);
         Mechanic dima = new Mechanic("Дмитрий", "Ковалев", "Motors", TypeAutoRepair.MULTI);
 
-
         ArrayList<Mechanic> mechanics  = new ArrayList<>();
-
         mechanics.add(evgeni);
         mechanics.add(alexandr);
         mechanics.add(miron);
@@ -85,14 +76,12 @@ public class Main  {
 
         scaniaG380.addDriverForTransport(drivers);
         scaniaG380.addMechanicForTransport(mechanics); // Кто находится в команде по обслуживанию ТС
-
-
         scaniaG380.repairTransport(); // Ремонт ТС
         scaniaG380.maintenanceTransport(); // ТО ТС
         scaniaG380.infoAboutTransport(); // Водители и механики ТС
 
-        Map<Transport, Mechanic> autoMechanic = new HashMap<>();
 
+        Map<Transport, Mechanic> autoMechanic = new HashMap<>();
         autoMechanic.put(ford, evgeni);
         autoMechanic.put(hyundai, dima);
         autoMechanic.put(lada, dima);
@@ -110,7 +99,18 @@ public class Main  {
             System.out.println(value.getKey() + ", " + value.getValue());
         }
 
-        //ford.chekDoubleElements(transports);
-        //transports.forEach(System.out::println);
+        Set<Drivers<?>> driversHashSet = new HashSet<>();
+        driversHashSet.add(oleg);
+        driversHashSet.add(boris);
+        driversHashSet.add(victor);
+        driversHashSet.add(boris);
+        driversHashSet.add(victor);
+        driversHashSet.add(boris);
+
+        Iterator<Drivers<?>> iterator = driversHashSet.iterator();
+
+        while (iterator.hasNext()) {
+            System.out.println(iterator.next());
+        }
     }
 }

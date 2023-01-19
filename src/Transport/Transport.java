@@ -101,27 +101,5 @@ public abstract class Transport implements Rival {
     public ArrayList<Drivers> getDrivers() {
         return drivers;
     }
-    /*public void chekDoubleElements(List<?> list) {
-        int listSizeBefore = list.size();
-        System.out.println("Размер листа до проверки составляет: " + listSizeBefore);
-        for (int i = 0; i < list.size(); i++) {
-            Object object1 = list.get(i);
-            for (int j = list.size() - 1; j > i; j--) {
-                if (object1.hashCode() == list.get(j).hashCode() && list.get(j).equals(object1)) {
-                    System.out.println("Найден повторяющийся объект: " + list.get(j) + " на строке номер " +
-                            i + " и " + j);
-                    list.remove(j);
-                }
-            }
-        }
-        System.out.println("После проверки размер списка составляет: " + list.size());
-    }*/
-
-
-
-
-
-
-
 
 }
